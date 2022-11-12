@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,9 +9,8 @@
 </head>
 
 <body>
-  {{object}}
-  <img height="255" src="{{ object.image.url }}" />
-  <img height="255" src="{% static 'blog/assets/8.jpg' %} " />
-</body>
 
-</html>
+  <form enctype='multipart/form-data' method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Publish">
