@@ -9,11 +9,12 @@ from django.views import View
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView
 from blog.models import Post
 
+@login_required
 def index(request):
     posts = Post.objects.order_by('-date_published').all()
     return render(request, 'blog/index.html', {"posts": posts})
 
-class ListPost(ListView):
+class ListPost(LoginRequiredMixin, ListView):
     model=Post
 
 class CreatePost(CreateView):
@@ -55,4 +56,3 @@ class ProfileUpdate(UpdateView):
     fields = ['username', 'first_name', 'last_name', 'email']
     success_url = reverse_lazy("blog-login")
 
-    
