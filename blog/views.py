@@ -2,7 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.admin import User
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User  
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
@@ -13,6 +14,9 @@ from blog.models import Post
 def index(request):
     posts = Post.objects.order_by('-date_published').all()
     return render(request, 'blog/index.html', {"posts": posts})
+
+def about(request):
+    return render(request, 'blog/about.html')
 
 class ListPost(ListView):
     paginate_by = 2
@@ -57,4 +61,5 @@ class ProfileUpdate(UpdateView):
     model = User
     fields = ['username', 'first_name', 'last_name', 'email']
     success_url = reverse_lazy("blog-login")
+  
 
