@@ -7,8 +7,9 @@ This is a web application, where photos of the city of Rosario will be published
 ```bash
   git clone https://github.com/ValorianiO/mi-proyecto-final.git .
   pip install -r requirements.txt
+  python manage.py migrate
   python manage.py runserver
-  http://127.0.0.1:8000/blog/
+  http://127.0.0.1:8000/blog/index
 ```
 
 ## Creating a admin user:

@@ -24,7 +24,7 @@ class ListPost(ListView):
 
 class CreatePost(CreateView):
     model=Post
-    fields = ['title', 'short_content', 'content', 'image']
+    fields = ['direccion', 'interseccion', 'content', 'image']
     success_url = reverse_lazy("list-post")
     
 class DetailPost(DetailView):
